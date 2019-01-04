@@ -1,0 +1,26 @@
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppShortcutsSample.Views.MainPage"
+             xmlns:behaviors="clr-namespace:AppShortcutsSample.Behaviors;assembly=AppShortcutsSample"
+             xmlns:views="clr-namespace:AppShortcutsSample.Views;assembly=AppShortcutsSample"
+             BackgroundColor="#3B4653"
+             Title="Monkeys">
+
+    <ListView ItemsSource="{Binding Monkeys}"
+              HasUnevenRows="true"
+              SeparatorColor="#BCD6F5"
+              ItemTapped="MonkeyListItemTapped"
+              BackgroundColor="Transparent">
+        <ListView.Behaviors>
+            <behaviors:EventToCommandBehavior EventName="ItemTapped"
+                                              Command="{Binding NavigateToMonkeyDetailCommand}"
+                                              Converter="{StaticResource ItemTappedEventArgsToItemConverter}" />
+        </ListView.Behaviors>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <views:MonkeyItemViewCell />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="AppShortcutsSample.Views.MenuPage"
+             BackgroundColor="#3B4653"
+             Title="Monkeys"
+             Icon="menu-icon.png">
+    <Grid BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Frame BackgroundColor="#252C35"
+               HasShadow="false"
+               CornerRadius="0"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill">
+            <StackLayout Padding="0,20,0,0"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Label FontSize="Large"
+                       Text="Monkeys"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,30"
+                       TextColor="Snow"/>
+                <abstractions:CircleImage BorderColor="#FFF5A623"
+                                          BorderThickness="2"
+                                          Source="MonkeyProfile.png"
+                                          Aspect="AspectFill"
+                                          WidthRequest="85"
+                                          HeightRequest="85" />
+            </StackLayout>
+        </Frame>
+        <StackLayout Margin="20,20,20,0"
+                     Grid.Row="1"
+                     Spacing="15">
+            <Grid>
+                <Label Text="My favorites"
+                       TextColor="Snow" />
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="FavoritesLinkClicked" />
+                </Grid.GestureRecognizers>
+            </Grid>
+        </StackLayout>
+    </Grid>
+</ContentPage>
