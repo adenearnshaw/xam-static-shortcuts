@@ -1,5 +1,4 @@
-﻿using AppShortcutsSample.Data;
-using AppShortcutsSample.Views;
+﻿using AppShortcutsSample.Views;
 using System;
 using AppShortcutsSample.Services;
 using Xamarin.Forms;
