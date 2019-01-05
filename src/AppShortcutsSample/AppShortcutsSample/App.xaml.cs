@@ -1,14 +1,15 @@
 ﻿using AppShortcutsSample.Data;
 using AppShortcutsSample.Views;
 using System;
-using System.Linq;
+using AppShortcutsSample.Services;
 using Xamarin.Forms;
 
 namespace AppShortcutsSample
 {
     public partial class App : Application
     {
-        public const string AppShortcutUriBase = "stc://appshortcuts/monkey/";
+        public const string AppShortcutUriBase = "stc://staticshortcuts/";
+        private const string ShortcutKey_Favorite = "favorites";
 
         public App()
         {
@@ -25,13 +26,12 @@ namespace AppShortcutsSample
             };
         }
 
-        protected override void OnAppLinkRequestReceived(Uri uri)
+        protected override async void OnAppLinkRequestReceived(Uri uri)
         {
-            var monkeyId = uri.ToString().Replace(AppShortcutUriBase, "");
-            var monkey = MonkeyStore.Instance.Monkeys.FirstOrDefault(m => m.Id.Equals(monkeyId));
+            var shortcutKey = uri.ToString().Replace(AppShortcutUriBase, "");
 
-            if (monkey != null)
-                MainPage.Navigation.PushAsync(new DetailsPage(monkey));
+            if (shortcutKey == ShortcutKey_Favorite)
+                await NavigationService.Instance.Navigate(new FavoritesPage());
             else
                 base.OnAppLinkRequestReceived(uri);
         }

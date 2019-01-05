@@ -5,18 +5,29 @@ using Android.Support.V7.App;
 namespace AppShortcutsSample.Droid
 {
 
-    [Activity(Label = "AppShortcuts Sample",
+    [Activity(Label = "StaticShortcuts Sample",
               Icon = "@drawable/app_icon",
               RoundIcon = "@drawable/app_icon_round",
               Theme = "@style/SplashTheme",
               MainLauncher = true,
-              NoHistory = true)]
+              NoHistory = true,
+              Exported = true,
+              Name = "com.adenearnshaw.StaticShortcutsSample.SplashActivity")]
+    [MetaData("android.app.shortcuts", Resource = "@xml/shortcuts")]
     public class SplashActivity : AppCompatActivity
     {
         protected override void OnResume()
         {
             base.OnResume();
-            StartActivity(new Intent(Application.Context, typeof(MainActivity)));
+
+            var intent = new Intent(Application.Context, typeof(MainActivity));
+
+            // Setting these properties is only required because SplashActivity doesn't
+            // call LoadApplication(), so the data must be passed through.
+            intent.SetAction(Intent.ActionView);
+            intent.SetData(Intent?.Data);
+
+            StartActivity(intent);
         }
     }
 }
