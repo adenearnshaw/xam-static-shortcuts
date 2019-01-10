@@ -6,5 +6,7 @@ View a list of monkeys and choose your favorites then, view all your favorites o
 
 From the homescreen icon, jumpstraight to the Favorites page from the icon's shortcut.
 
+Read the accompanying post on [my blog](https://adenearnshaw.com/adding-static-shortcuts/).
 
-Based on the [Xamarin.Forms-Monkeys](https://github.com/jamesmontemagno/Xamarin.Forms-Monkeys) sample from [James Montemagno](https://montemagno.com/)
+  
+> Based on the [Xamarin.Forms-Monkeys](https://github.com/jamesmontemagno/Xamarin.Forms-Monkeys) sample from [James Montemagno](https://montemagno.com/)
